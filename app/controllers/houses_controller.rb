@@ -15,10 +15,14 @@ class HousesController < ApplicationController
   # GET /houses/new
   def new
     @house = House.new
+    # 複数のフォームを作る場合は、複数回newする
+    2.times {@house.stations.new}
   end
 
   # GET /houses/1/edit
   def edit
+    @houses = House.all
+    1.times {@house.stations.new}
   end
 
   # POST /houses
@@ -69,6 +73,7 @@ class HousesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def house_params
-      params.require(:house).permit(:name, :rent, :adress, :age, :content)
+      params.require(:house).permit(:name, :rent, :adress, :age, :content, stations_attributes: %i(
+        id _destroy house_id route_name station_name walking_minutes))
     end
 end

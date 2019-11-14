@@ -2,7 +2,63 @@
 <br>
 <h2>物件編集</h2>
 
-<%= render 'form', house: @house %>
+<%= form_for(@house) do |f| %>
+  <% if @house.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(house.errors.count, "error") %> prohibited this house from being saved:</h2>
+
+      <ul>
+      <% house.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "物件名" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label "賃料" %>
+    <%= f.number_field :rent %><%= "円" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "住所" %>
+    <%= f.text_field :adress %>
+  </div>
+
+  <div class="field">
+    <%= f.label "築年数" %>
+    <%= f.number_field :age %><%= "年" %>
+  </div>
+
+  <div class="field">
+    <%= f.label "備考" %>
+    <%= f.text_area :content %>
+  </div>
+
+  <% x = 1 %>
+  <%= f.fields_for :stations do |df| %>
+    <h3>最寄駅<%= x %></h3>
+    <%= df.label "路線名" %>
+    <%= df.text_field :route_name %>
+    <%= df.label "駅名" %>
+    <%= df.text_field :station_name %>
+    <%= df.label "徒歩分数" %>
+    <%= df.number_field :walking_minutes %><%= "分" %>
+    <% x += 1 %>
+    <br>
+    <br>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit "物件を登録する" %>
+  </div>
+
+<% end %>
 
 <%= link_to '詳細', @house %> |
 <%= link_to '戻る', houses_path %>
