@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag "custom/edit", :media => "all" %>
-
 <h1>編集</h1>
 <br>
 <h2>物件編集</h2>
@@ -44,20 +42,21 @@
 
 <br>
 <h3>最寄駅</h3>
-
-<table class="table table-striped table-bordered table-hover">
-  <tbody>
-    <%= f.nested_fields_for :stations, wrapper_tag: :tr do |q| %>
-      <th>路線名</th>
-      <td><%= q.text_field :route_name, class: 'form-control' %></td>
-      <th>駅名</th>
-      <td><%= q.text_field :station_name, class: 'form-control' %></td>
-      <th>徒歩分数</th>
-      <td><%= q.number_field :walking_minutes , class: 'form-control' %><%= "分"%></td>
-      <td><%= q.remove_nested_fields_link '表示を消す', class: 'btn btn-danger', role: 'button' %></td>
-    <% end %>
-  </tbody>
-</table>
+<div id="style">
+  <table class="table table-striped table-bordered table-hover">
+    <tbody>
+      <%= f.nested_fields_for :stations, wrapper_tag: :tr do |q| %>
+        <th>路線名</th>
+        <td><%= q.text_field :route_name, class: 'form-control' %></td>
+        <th>駅名</th>
+        <td><%= q.text_field :station_name, class: 'form-control' %></td>
+        <th>徒歩分数</th>
+        <td><%= q.number_field :walking_minutes , class: 'form-control' %><%= "分"%></td>
+        <td><%= q.remove_nested_fields_link '表示を消す', class: 'btn btn-danger', role: 'button' %></td>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <%= f.add_nested_fields_link :stations, '最寄駅を追加する', class: 'btn btn-primary', role: 'button' %>
 
   <div class="actions">
