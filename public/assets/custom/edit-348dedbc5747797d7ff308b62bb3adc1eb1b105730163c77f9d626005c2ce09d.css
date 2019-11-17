@@ -1,0 +1,13 @@
+/* line 1, /Users/mutton_omomuki/Desktop/workspace6/nobinobi/app/assets/stylesheets/custom/edit.scss */
+th, td {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: 0px;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding-bottom: 7px;
+  padding-left: 0px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
