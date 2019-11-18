@@ -28,55 +28,28 @@
 </p>
 
 <br>
-<h3>最寄駅</h3>
-<p>
-  <strong>路線名:</strong>
-  <%= @house.stations.first.route_name %>
-</p>
+<tbody>
+  <% n = 0 %>
+  <% @houses.each do |station|%>
+    <h3>最寄駅<%= n += 1 %></h3>
+    <p>
+      <strong>路線名:</strong>
+      <%= station.route_name %>
+    </p>
 
-<p>
-  <strong>駅名:</strong>
-  <%= @house.stations.first.station_name %>
-</p>
+    <p>
+      <strong>駅名:</strong>
+      <%= station.station_name %>
+    </p>
 
-<p>
-  <strong>徒歩分数:</strong>
-  <%= "#{@house.stations.first.walking_minutes}分" %>
-</p>
-
+    <p>
+      <strong>徒歩分数:</strong>
+      <%= "#{station.walking_minutes}分" %>
+    </p>
+  <% end %>
+</tbody>
 <br>
-<h3>最寄駅2</h3>
-<p>
-  <strong>路線名:</strong>
-  <%= @house.stations.second.route_name %>
-</p>
 
-<p>
-  <strong>駅名:</strong>
-  <%= @house.stations.second.station_name %>
-</p>
-
-<p>
-  <strong>徒歩分数:</strong>
-  <%= "#{@house.stations.second.walking_minutes}分" %>
-</p>
-
-<br>
-<h3>最寄駅2</h3>
-<p>
-  <strong>路線名:</strong>
-  <%= @house.stations.third.route_name %>
-</p>
-
-<p>
-  <strong>駅名:</strong>
-  <%= @house.stations.third.station_name %>
-</p>
-
-<p>
-  <strong>徒歩分数:</strong>
-  <%= "#{@house.stations.third.walking_minutes}分" %>
-</p>
 
 <%= link_to '編集', edit_house_path(@house) %> |
 <%= link_to '戻る', houses_path %>
