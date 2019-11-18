@@ -16,7 +16,7 @@
     </tr>
   </thead>
 
-  <tbody>
+  <tfoot>
     <% @houses.each do |house| %>
       <tr>
         <td><%= house.name %></td>
@@ -29,7 +29,7 @@
         <td><%= link_to '削除', house, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
-  </tbody>
+  </tfoot>
 </table>
 
 <br>
